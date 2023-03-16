@@ -1,0 +1,40 @@
+<%- include('partes/header')  %>    
+
+<%- include('partes/navbar')  %> 
+
+
+
+            <div class="container text-center">
+                <h3>  create account</h3>
+                <form action="/login" method="POST">
+                    <input type="text" class="form-control" name="username" placeholder="enter your name">
+                    <input type="email" class="form-control" name="email" placeholder="email">
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                     <input id="aa" type="submit" value="submit " class="btn btn-primary">
+
+
+                </form> 
+                <br>
+
+                 <%if(autherr){%>
+                    <p class="alert alert-danger">
+                        <%= autherr %>
+                    </p>
+                     <%}%>
+                <br>
+
+                <div>
+                     <a href="/signup">signup</a> 
+                </div>       
+             
+    </div>
+    
+
+
+    
+
+
+<%- include('partes/footer')  %>  
+
+
+

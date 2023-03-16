@@ -1,0 +1,37 @@
+<%- include('partes/header')  %>    
+
+<%- include('partes/navbar')  %>
+
+
+<% if(data.length == 0){  %>
+    <p class=" alert alert-danger"> there is item</p>
+    <%    }else{%>
+
+<table class="table">
+    <thead > 
+        <td>no</td>
+        <td>product name</td><td>price </td><td>  adress   </td><td>status</td>
+        <td>order
+        </td>
+
+    </thead>
+    <tbody>
+          
+  <% for(let i=0; i< data.length;i++)   {%>
+    <td><%=i+1%></td><td>  <%=data[i].name%>   </td><td><%=data[i].price%></td><td><%=data[i].adress%></td>
+
+   <td><%=data[i].status%></td>
+   <td><form action="/cart/order/adress/delet"   method="POST"  >
+    <input type="hidden" value="<%= data[i]._id%>"  name="deletorder" >
+
+    <input type="submit" value="deletorder"  class="btn btn-danger" >
+
+   </form></td>
+
+
+</tbody>
+<%}%>
+</table>
+<%}%>
+
+<%- include('partes/footer')  %>  

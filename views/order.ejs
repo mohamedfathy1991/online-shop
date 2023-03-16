@@ -1,0 +1,23 @@
+<%- include('partes/header')  %>    
+
+<%- include('partes/navbar')  %> 
+
+
+<h3>please enter ur adress</h3>
+
+<%if(validationerr){%>
+    <p class="alert alert-danger">
+
+<%=validationerr.msg%>
+<%}%>
+</p>
+<form action="/cart/order/adress" method="POST" >
+<input type="text" placeholder="enter adress" name="adress">
+<input type="submit" class="btn btn-success" value="order">
+
+
+</form>
+
+
+
+<%- include('partes/footer')  %>  

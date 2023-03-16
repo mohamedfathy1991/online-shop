@@ -1,0 +1,62 @@
+<%- include('partes/header')  %>    
+
+<%- include('partes/navbar')  %>
+
+
+<%if(validationerr){%>
+    <p class="alert alert-danger">
+
+<%=validationerr.msg%>
+<%}%>
+</p>
+
+
+
+
+<% if(item.length == 0){  %>
+    <p class=" alert alert-danger"> there is item</p>
+    <%    }else{%>
+        <div class="container">
+    <table class="table">
+        <thead > 
+            <td>no</td>
+            <td>product name</td><td>price </td><td>  amount   </td><td>total</td><td>save/delet</td>
+            <td>order
+            </td>
+    
+        </thead>
+        <tbody>
+            
+    
+  <% for(let i=0; i< item.length;i++)   {%>
+             <td><%=i+1%></td><td>  <%=item[i].name%>   </td><td><%=item[i].price%></td>
+            
+             <td> 
+                <form   method="POST"  >
+  
+                    <input type="number" name="amount" value="<%=item[i].amount%>" class="form-control">
+                    <td>  <%= item[i].amount*item[i].price  %>   </td>
+                    <input type="hidden" name="cartid"   value="<%= item[i]._id  %>">
+
+                    <td><input type="submit" value="save"  class="btn btn-success" formaction="/cart/save">
+                        <input type="submit" value="delet"  class="btn btn-danger" formaction="/cart/delet">
+
+                    </td>
+                </form>    </td>
+                <td><form action="/cart/order" method="post">
+
+                    <input type="hidden" name="itemamount" value="<%= item[i].amount %>">
+                    <input type="hidden" name="itemname" value="<%= item[i].name %>">
+                    <input type="hidden" name="itemprice" value="<%= item[i].price %>">
+
+
+                    <input type="submit" value="order" class="btn btn-success" >
+                </form></td>
+             
+        </tbody>
+<%}%>
+    </table>
+<%  }%>
+
+        </div>
+<%- include('partes/footer')  %>  

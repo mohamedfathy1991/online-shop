@@ -1,0 +1,80 @@
+<%- include('partes/header')  %>    
+
+<%- include('partes/navbar')  %> 
+
+
+
+<form action="/home" method="GET">
+<select name="category" class="form-control">
+
+ <option value="phone">phone</option>
+ <option value="clothes">clothes</option>
+ <option value="all">all</option>
+</select>
+<input type="submit" value="filter" class="btn btn-primary">
+</form>
+
+
+    <%if(validationerr){%>
+        <p class="alert alert-danger">
+
+    <%=validationerr.msg%>
+    <%}%>
+</p>
+
+
+
+
+    <% if (products.length == 0) {%>
+        <div class="alert alert-danger">
+            there is no product
+        </div>
+
+        
+   
+  <%}else {%>
+    <div class="container">
+        <div class="row">
+            <% for(let product of products){%>
+            <div class="col col-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card" style="width: 18rem;">
+                    
+                    <img class="card-img-top" src="<%= product.img %>" alt="Card image cap">
+                    
+                    <div class="card-body">
+                      
+                      
+                        <h5 class="card-title" > <a href="/product/<%= product.name %>"><%= product.name %></a></h5>
+                        <p class="price"> price:<%= product.price %>$</p>
+                     
+                        <form action="/cart" method="POST" class="add-to-cart-form" >
+                        <input class="form-control" type="number" name="amount">
+                          <input type="hidden" name="name" value="<%= product.name%>">
+                          <input type="hidden" name="price" value="<%= product.price%>">
+                          <input type="hidden" name="productid" value="<%= product._id%>">
+                          <input type="hidden" name="redirectto" value="/home">
+
+
+                        <input  class="btn btn-primary" type="submit" value="add to cart">
+                     </form>
+                     
+                       
+                      <a href="#" class="btn btn-primary">Go to home</a>
+                    </div>
+                </div>
+                  </div>
+                  <%}%>
+            </div>
+        
+    </div>
+    <a href="www.facebook" ><h2>omar</h2></a>
+    
+
+
+    <%}%>
+
+
+<%- include('partes/footer')  %>  
+
+
+

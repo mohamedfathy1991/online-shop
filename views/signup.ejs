@@ -1,0 +1,64 @@
+<%- include('partes/header')  %>    
+
+<%- include('partes/navbar')  %> 
+
+
+
+            <div class="container text-center">
+                <h3>  create account</h3>
+                <form action="/signup" method="POST">
+                    <input type="text" class="form-control" name="username" placeholder="enter your name">
+                    <%let err= valerror.find(x => x.param =='username' )  %>
+                    <%if(err) {%>
+                        <p class="alert alert-danger">
+                            <%= err.msg   %> </p>
+                    <% }%>
+                    <input type="email" class="form-control" name="email" placeholder="email">
+                    <%let erremail= valerror.find(x => x.param =='email' )  %>
+                    <%if(erremail) {%>
+                        <p class="alert alert-danger">
+                            <%= erremail.msg   %> </p>
+                    <% }%>
+                    <input type="password" class="form-control" name="password" placeholder="password">
+                    <%let errpass = valerror.find(x => x.param =='password' )  %>
+                    <%if(errpass) {%>
+                        <p class="alert alert-danger">
+                            <%= errpass.msg   %> </p>
+                    <% }%>
+                    <input type="password" class="form-control" name="confirm-password" placeholder="confirm password">
+                    <%let errconfirm= valerror.find(x => x.param =='confirm-password' )  %>
+                    <%if(errconfirm) {%>
+                        <p class="alert alert-danger">
+                            <%= errconfirm.msg  %> </p>
+                    <% }%>
+                    <input id="aa" type="submit" value="ctreate account" class="btn btn-primary">
+
+
+                </form>
+                <br>
+                
+
+                <br>
+
+
+                <%  if(locals.autherr){  %>
+                    <p class="alert alert-danger">
+                        <%= autherr %>
+                    </p>
+                     <%}%>
+                <br>
+
+                
+                  
+             
+    </div>
+    
+
+
+    
+
+
+<%- include('partes/footer')  %>  
+
+
+

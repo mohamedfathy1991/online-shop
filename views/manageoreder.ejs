@@ -1,0 +1,34 @@
+<%- include('partes/header')  %>    
+
+<%- include('partes/navbar')  %>
+
+<h3>order management</h3>
+<% if(managedata.length == 0){  %>
+    <p class=" alert alert-danger"> there is item</p>
+    <%    }else{%>
+
+
+<table class="table">
+    <thead > 
+        <td>no</td>
+        <td>email user </td><td>product</td><td>price </td><td>  adress   </td><td>status</td>
+        <td>order
+        </td>
+
+    </thead>
+    <tbody>
+                 
+  <% for(let i=0; i< managedata.length;i++)   {%>
+    <td><%=i+1%></td><td>  <%=managedata[i].useremail%>   </td><td><%=managedata[i].name%></td><td><%=managedata[i].price%></td>
+
+   <td><%=managedata[i].adress%></td><td><form action="post">
+    <input type="text" value="<%=managedata[i].status%>"  name="status" >
+    </form></td>
+   
+
+</tbody>
+<%}%>
+</table>
+<%}%>
+
+<%- include('partes/footer')  %>  
